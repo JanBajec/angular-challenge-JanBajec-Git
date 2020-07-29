@@ -1,1 +1,8 @@
-<div>details</div>
+<div class="details">
+  <div class="presentation">
+    <img class="image" src="{{product.primaryMediaUrl}}">
+    <p>{{product.cardTitle}}</p>
+    <p>{{product.cardDescription}}</p>
+    <button [disabled]="checkifProductAlreadyExistInCart(product.id)" class="addToCart" (click)="addToCart(product.id)" [routerLink]="['/home']" >Add To Cart</button>
+  </div>
+</div>

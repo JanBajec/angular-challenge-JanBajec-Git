@@ -1,1 +1,30 @@
-<div>home</div>
+<div class="filter">
+  <button [routerLink]="['/cart']">My Cart</button>
+  <hr>
+  <label>Search: </label>
+  <input class="searchbar" type="text" [(ngModel)]="searchInput" >
+  <button class="searchbutton" (click)="filterSearch()">Search</button>
+  <hr>
+  <label>Order alphabetically:</label>
+  <br>
+  <input type="radio" name="sort" value="true" (click)="sortAlphabetically(true)"><label>ascending</label>
+  <br>
+  <input type="radio" name="sort" value="false" (click)="sortAlphabetically(false)"><label>descending</label>
+  <hr>
+  <label>Filter by amount in €: </label><button (click)="filterByAmount()">Filter</button>
+  <div class="custom-slider">
+    <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options"></ng5-slider>
+  </div>
+</div>
+<div class="products">
+  <div class="column" *ngFor="let product of products" [routerLink]="['/details',product.id]">
+    <div class="card">
+      <img src="{{product.primaryMediaUrl}}">
+      <h3>{{product.cardTitle}}</h3>
+      <p>{{product.cardDescription}}</p>
+      <p>Avaliable: {{product.availableQuantity}}</p>
+      <p>In my Cart: </p>
+    </div>
+  </div>
+</div>
+
