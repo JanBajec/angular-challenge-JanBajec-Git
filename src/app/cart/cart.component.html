@@ -1,0 +1,14 @@
+<div class="cart">
+  <div class="product" *ngFor="let product of cartProducts">
+    <img class="productImage" src="{{product.primaryMediaUrl}}">
+    <p>{{product.cardTitle}}</p>
+    <p>{{getPrice(product.id)}}€</p>
+    <button (click)="removeFromCart(product.id)">Remove</button>
+  </div>
+  <div class="totalAmount">
+    <p>Total amount: {{totalAmount}}€</p>
+  </div>
+  <div class="checkout">
+    <button [disabled]="!checkifItemInCartExists()" (click)="checkout()"  >Continue To Checkout</button>
+  </div>
+</div>
