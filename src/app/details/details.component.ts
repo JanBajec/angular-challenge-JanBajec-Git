@@ -3,6 +3,7 @@ import {DataService} from '../data.service';
 import {CartService} from '../cart.service';
 import {ActivatedRoute} from '@angular/router';
 import {LocalStorageService} from 'angular-web-storage';
+import {Data} from '../data';
 
 @Component({
   selector: 'app-details',
@@ -11,7 +12,7 @@ import {LocalStorageService} from 'angular-web-storage';
 })
 export class DetailsComponent implements OnInit {
 
-  product: any;
+  product: Data;
 
   constructor(private dataService: DataService, private cartService: CartService, private route: ActivatedRoute, private local: LocalStorageService) {}
 
@@ -25,6 +26,10 @@ export class DetailsComponent implements OnInit {
 
   checkifProductAlreadyExistInCart(productId: string): boolean {
     return this.cartService.checkIfAlreadyInCart(productId);
+  }
+
+  getPrice(productId: string): number {
+    return this.dataService.getPrice(productId);
   }
 
 

@@ -1,8 +1,13 @@
 <div class="details">
-  <div class="presentation">
-    <img class="image" src="{{product.primaryMediaUrl}}">
-    <p>{{product.cardTitle}}</p>
-    <p>{{product.cardDescription}}</p>
-    <button [disabled]="checkifProductAlreadyExistInCart(product.id)" class="addToCart" (click)="addToCart(product.id)" [routerLink]="['/home']" >Add To Cart</button>
+  <div class="row">
+    <div class="col-1"></div>
+      <img class="col-lg-4 col-md-4 col-sm-12" src="{{product.primaryMediaUrl}}">
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <p>{{product.cardTitle}}</p>
+      <p>{{getPrice(product.id)}}€</p>
+      <p>{{product.cardDescription}}</p>
+      <button [disabled]="checkifProductAlreadyExistInCart(product.id)" class="btn btn-primary" (click)="addToCart(product.id)" [routerLink]="['/home']" >Add To Cart</button>
+    </div>
+    <div class="col-1"></div>
   </div>
 </div>

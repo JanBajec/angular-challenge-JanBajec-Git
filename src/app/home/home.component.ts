@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DataService} from '../data.service';
 import {CartService} from '../cart.service';
 import {Options} from 'ng5-slider';
+import {Data} from "../data";
 
 @Component({
   selector: 'app-home',
@@ -13,8 +14,8 @@ export class HomeComponent implements OnInit {
   products: any = [];
   searchInput = '';
 
-  value = 50;
-  highValue = 200;
+  value = 0;
+  highValue = 10000;
   options: Options = {
     floor: 0,
     ceil: 10000
@@ -29,7 +30,7 @@ export class HomeComponent implements OnInit {
 
   filterSearch(): void {
     const regex = new RegExp(this.searchInput);
-    const newProducts: any = [];
+    const newProducts: Data[] = [];
     this.products = this.dataService.getProducts();
     for (const product of this.products) {
       if (regex.test(product.cardTitle)) {
@@ -56,7 +57,7 @@ export class HomeComponent implements OnInit {
   }
 
   filterByAmount(): void {
-    const newProducts: any = [];
+    const newProducts: Data[] = [];
     this.products = this.dataService.getProducts();
     for (const product of this.products) {
       const listOfPlans = product.listOfPlans;

@@ -1,30 +1,39 @@
-<div class="filter">
-  <button [routerLink]="['/cart']">My Cart</button>
-  <hr>
-  <label>Search: </label>
-  <input class="searchbar" type="text" [(ngModel)]="searchInput" >
-  <button class="searchbutton" (click)="filterSearch()">Search</button>
-  <hr>
-  <label>Order alphabetically:</label>
-  <br>
-  <input type="radio" name="sort" value="true" (click)="sortAlphabetically(true)"><label>ascending</label>
-  <br>
-  <input type="radio" name="sort" value="false" (click)="sortAlphabetically(false)"><label>descending</label>
-  <hr>
-  <label>Filter by amount in €: </label><button (click)="filterByAmount()">Filter</button>
-  <div class="custom-slider">
-    <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options"></ng5-slider>
+<div class="home">
+  <div class="filter">
+    <input placeholder="Search" type="text" [(ngModel)]="searchInput" (keyup)="filterSearch()" >
+    <hr>
+    <div class="row">
+      <div class="col-1"></div>
+      <input class="col-6" placeholder="Search" type="text" [(ngModel)]="searchInput">
+      <button class="col-3" (click)="filterSearch()">SRC</button>
+      <div class="col-2"></div>
+    </div>
+    <hr>
+    <label>Order alphabetically:</label>
+    <br>
+    <input type="radio" name="sort" value="true" (click)="sortAlphabetically(true)"><label>ascending</label>
+    <br>
+    <input type="radio" name="sort" value="false" (click)="sortAlphabetically(false)"><label>descending</label>
+    <hr>
+    <label>Filter by amount in €: </label>
+    <div class="custom-slider">
+      <ng5-slider (mouseup)="filterByAmount()" [(value)]="value" [(highValue)]="highValue" [options]="options"></ng5-slider>
+    </div>
   </div>
-</div>
-<div class="products">
-  <div class="column" *ngFor="let product of products" [routerLink]="['/details',product.id]">
-    <div class="card">
-      <img src="{{product.primaryMediaUrl}}">
-      <h3>{{product.cardTitle}}</h3>
-      <p>{{product.cardDescription}}</p>
-      <p>Avaliable: {{product.availableQuantity}}</p>
-      <p>In my Cart: </p>
+  <div class="products">
+    <div class="row">
+      <div class="col-lg-3 col-md-4 col-sm-6 img" *ngFor="let product of products" [routerLink]="['/details',product.id]" style="margin-bottom: 10px">
+        <div class="card" style="width: 18rem; min-height: 500px">
+          <img class="card-img-top" src="{{product.primaryMediaUrl}}">
+          <div class="card-body">
+            <h5 class="card-title">{{product.cardTitle}}</h5>
+            <p class="card-text">{{product.cardDescription}}</p>
+            <p class="card-text">Avaliable: {{product.availableQuantity}}</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
 

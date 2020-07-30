@@ -3,75 +3,29 @@ $myRed: #FF2F4A;
 $myOrnage: #FEBF70;
 $myBackgroundGrey: #F5F6FB;
 
-body{
-  background-color: $myBackgroundGrey;
-}
-
-* {
-  box-sizing: border-box;
+.home{
+  margin-top: 70px;
+  z-index: 2;
 }
 
 .filter{
   height: 100%;
   width: 200px;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   overflow-x: hidden;
   padding-top: 20px;
-}
-
-.searchbutton{
-
+  margin-left: 10px;
 }
 
 .products{
-  margin-left: 200px;
-}
-
-.column {
-  float: left;
-  width: 16%;
-  padding: 10px;
-}
-
-@media screen and (max-width: 1600px) {
-  .column {
-    width: 20%;
-    display: block;
-    margin-bottom: 10px;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  .column {
-    width: 33%;
-    display: block;
-    margin-bottom: 10px;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .column {
-    width: 100%;
-    display: block;
-    margin-bottom: 10px;
-  }
+  margin-left: 210px;
 }
 
 img{
   width: 100%;
-  height: 150px;
-}
-
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 16px;
-  text-align: center;
-  background-color: #f1f1f1;
-}
-
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  height: 200px;
+  object-fit: cover;
 }
 
 ::ng-deep {
@@ -88,7 +42,7 @@ img{
     height: 15px;
     top: auto; /* to remove the default positioning */
     bottom: 0;
-    background-color: $myBlue;
+    background-color: #007BFF;
     border-radius: 10px;
   }
 
@@ -115,6 +69,6 @@ img{
   }
 
   .custom-slider .ng5-slider .ng5-slider-tick.ng5-slider-selected {
-    background: orange;
+    background: $myOrnage;
   }
 }

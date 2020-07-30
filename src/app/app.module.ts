@@ -9,13 +9,17 @@ import {FormsModule} from '@angular/forms';
 import { Ng5SliderModule } from 'ng5-slider';
 import { CartComponent } from './cart/cart.component';
 import {LocalStorageService} from 'angular-web-storage';
+import { FilterComponent } from './filter/filter.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DetailsComponent,
     HomeComponent,
-    CartComponent
+    CartComponent,
+    FilterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

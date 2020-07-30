@@ -1,15 +1,16 @@
 import {Injectable} from '@angular/core';
+import {Data} from './data';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class DataService {
-  products: any = [
+  products: Data[] = [
     {
       'campaignId': 'CN201701188',
       'cardTitle': 'Title 1',
-      'cardDescription': 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, ',
+      'cardDescription': 'y dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, ',
       'primaryMediaUrl': 'http://www.phanteks.com/images/product/Enthoo-Evolv-X/Black/PH-ES518ETG-1z.jpg',
       'cardStartDate': '0001-01-01T00:00:00Z',
       'cardEndDate': '0001-01-01T00:00:00Z',
@@ -43,7 +44,7 @@ export class DataService {
         }
       ],
       'currentWorkflow': 'saved',
-      'IgnEndDate': '2017-02-28T18:59:59.999Z',
+      'campaignEndDate': '2017-02-28T18:59:59.999Z',
       'id': 'c3d444c3d2774263ab93598fb0705370',
       'userId': '5d6117b9ae114c83bb53cfdd8c722e78',
       'createdAt': '2017-02-06T11:14:45.131Z',
@@ -291,11 +292,6 @@ export class DataService {
             'unitOfPeriod': '',
             'countOfPeriod': 0
           },
-          'signupFee': {
-            'amount': 0,
-            'currency': '',
-            'currencySymbol': ''
-          },
           'id': '1b0f10ad11774e57b7d98061f0039e48'
         }
       ],
@@ -508,12 +504,14 @@ export class DataService {
       'updatedAt': '2017-02-06T11:16:44.344Z'
     }];
 
-  public getProducts(): any {
+  homeProducts: Data[] = this.products;
+
+  public getProducts(): Data[] {
     return this.products;
   }
 
-  public getProductsById(productIds: string[]): any {
-    const cartProducts: any = [];
+  public getProductsById(productIds: string[]): Data[] {
+    const cartProducts: Data[] = [];
     if (productIds === null) {return cartProducts; }
     for (const product of this.products) {
       for (const productId of productIds) {
@@ -523,7 +521,7 @@ export class DataService {
     return cartProducts;
   }
 
-  public getProductById(id: string): any {
+  public getProductById(id: string): Data {
     for (const product of this.products) {
       if (product.id === id) { return product; }
     }
@@ -535,10 +533,10 @@ export class DataService {
       if (productId === product.id) {
         const listOfPlans = product.listOfPlans;
         for (const plan of listOfPlans) {
-          if (plan.price.currency === 'EUR') {
-            amount = plan.price.amount;
-          } else if (plan.price.currency === 'USD') {
-            amount = plan.price.amount * 0.85; // 1USD = 0,85EUR
+          if (plan.currency === 'EUR') {
+            amount = plan.amount;
+          } else if (plan.currency === 'USD') {
+            amount = plan.amount * 0.85; // 1USD = 0,85EUR
           }
         }
       }

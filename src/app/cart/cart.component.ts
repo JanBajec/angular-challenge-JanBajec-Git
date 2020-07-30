@@ -1,18 +1,19 @@
 import {Component, DoCheck, OnInit} from '@angular/core';
 import {CartService} from '../cart.service';
 import {DataService} from '../data.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
+import {Data} from '../data';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent implements OnInit, DoCheck {
+export class CartComponent implements OnInit {
 
   constructor(private cartService: CartService, private dataService: DataService, private router: Router) { }
 
-  cartProducts: any = [];
+  cartProducts: Data[] = [];
   totalAmount: number;
 
   ngOnInit() {
@@ -20,12 +21,12 @@ export class CartComponent implements OnInit, DoCheck {
     this.totalAmount = this.getTotalAmount();
   }
 
-  ngDoCheck() {
-    this.cartProducts = this.getMyCart();
-    this.totalAmount = this.getTotalAmount();
-  }
+  // ngDoCheck() {
+  //   this.cartProducts = this.getMyCart();
+  //   this.totalAmount = this.getTotalAmount();
+  // }
 
-  getMyCart(): any {
+  getMyCart(): Data[] {
     const productIds = this.getProductIds();
     return this.dataService.getProductsById(productIds);
   }
@@ -36,6 +37,8 @@ export class CartComponent implements OnInit, DoCheck {
 
   removeFromCart(productId: string): void {
     this.cartService.removeFromCart(productId);
+    this.cartProducts = this.getMyCart();
+    this.totalAmount = this.getTotalAmount();
   }
 
   getPrice(productId: string): number {
@@ -54,7 +57,7 @@ export class CartComponent implements OnInit, DoCheck {
 
   checkout(): void {
     this.cartService.checkout();
-    if (confirm("Your payment was successful! ")) {
+    if (confirm('Your payment was successful! ')) {
       this.router.navigate(['/home']);
     }
   }
