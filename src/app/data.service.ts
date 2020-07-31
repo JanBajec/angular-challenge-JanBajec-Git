@@ -292,6 +292,11 @@ export class DataService {
             'unitOfPeriod': '',
             'countOfPeriod': 0
           },
+/*          'freeTrialPeriod': { je tu mogoce napaka? saj sta imeni isti kot ena višje?
+            'amount': 0,
+            'currency': '',
+            'currencySymbol': ''
+          },*/
           'id': '1b0f10ad11774e57b7d98061f0039e48'
         }
       ],
@@ -533,10 +538,10 @@ export class DataService {
       if (productId === product.id) {
         const listOfPlans = product.listOfPlans;
         for (const plan of listOfPlans) {
-          if (plan.currency === 'EUR') {
-            amount = plan.amount;
-          } else if (plan.currency === 'USD') {
-            amount = plan.amount * 0.85; // 1USD = 0,85EUR
+          if (plan.price.currency === 'EUR') {
+            amount = plan.price.amount;
+          } else if (plan.price.currency === 'USD') {
+            amount = plan.price.amount * 0.85; // 1USD = 0,85EUR
           }
         }
       }

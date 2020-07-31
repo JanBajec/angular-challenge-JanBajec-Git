@@ -1,24 +1,25 @@
 <div class="home">
   <div class="filter">
-    <input placeholder="Search" type="text" [(ngModel)]="searchInput" (keyup)="filterSearch()" >
-    <hr>
-    <div class="row">
-      <div class="col-1"></div>
-      <input class="col-6" placeholder="Search" type="text" [(ngModel)]="searchInput">
-      <button class="col-3" (click)="filterSearch()">SRC</button>
-      <div class="col-2"></div>
-    </div>
-    <hr>
-    <label>Order alphabetically:</label>
-    <br>
-    <input type="radio" name="sort" value="true" (click)="sortAlphabetically(true)"><label>ascending</label>
-    <br>
-    <input type="radio" name="sort" value="false" (click)="sortAlphabetically(false)"><label>descending</label>
-    <hr>
-    <label>Filter by amount in €: </label>
-    <div class="custom-slider">
-      <ng5-slider (mouseup)="filterByAmount()" [(value)]="value" [(highValue)]="highValue" [options]="options"></ng5-slider>
-    </div>
+<!--    <input placeholder="Search" type="text" [(ngModel)]="searchInput" (keyup)="filterSearch()" >-->
+<!--    <hr>-->
+<!--    <div class="row">-->
+<!--      <div class="col-1"></div>-->
+<!--      <input class="col-6" placeholder="Search" type="text" [(ngModel)]="searchInput">-->
+<!--      <button class="col-3" (click)="filterSearch()">SRC</button>-->
+<!--      <div class="col-2"></div>-->
+<!--    </div>-->
+<!--    <hr>-->
+<!--    <label>Order alphabetically:</label>-->
+<!--    <br>-->
+<!--    <input type="radio" name="sort" value="true" (click)="sortAlphabetically(true)"><label>ascending</label>-->
+<!--    <br>-->
+<!--    <input type="radio" name="sort" value="false" (click)="sortAlphabetically(false)"><label>descending</label>-->
+<!--    <hr>-->
+<!--    <label>Filter by amount in €: </label>-->
+<!--    <div class="custom-slider">-->
+<!--      <ng5-slider (mouseup)="filterByAmount()" [(value)]="value" [(highValue)]="highValue" [options]="options"></ng5-slider>-->
+<!--    </div>-->
+    <app-filter (filterSearchCart)="filterSearch($event)" (sortAlphabeticallyCart)="sortAlphabetically($event)" (filterByAmountCart)="filterByAmount($event)" ></app-filter>
   </div>
   <div class="products">
     <div class="row">

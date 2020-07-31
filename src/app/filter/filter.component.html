@@ -1,1 +1,21 @@
-<p>filter works!</p>
+<div class="filter">
+  <input placeholder="Search" type="text" [(ngModel)]="searchInput" (keyup)="onFilterSearch()" >
+  <hr>
+  <div class="row">
+    <div class="col-1"></div>
+    <input class="col-6" placeholder="Search" type="text" [(ngModel)]="searchInput">
+    <button class="col-3" (click)="onFilterSearch()">SRC</button>
+    <div class="col-2"></div>
+  </div>
+  <hr>
+  <label>Order alphabetically:</label>
+  <br>
+  <input type="radio" name="sort" value="true" (click)="onSortAlphabetically(true)"><label>ascending</label>
+  <br>
+  <input type="radio" name="sort" value="false" (click)="onSortAlphabetically(false)"><label>descending</label>
+  <hr>
+  <label>Filter by amount in €: </label>
+  <div class="custom-slider">
+    <ng5-slider (mouseup)="onFilterByAmount()" [(value)]="filterValues.low" [(highValue)]="filterValues.high" [options]="options"></ng5-slider>
+  </div>
+</div>
