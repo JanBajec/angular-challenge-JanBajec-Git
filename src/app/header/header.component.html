@@ -1,4 +1,11 @@
-<nav class="navbar navbar-expand navbar-light bg-light">
+<nav class="navbar navbar-expand">
   <a class="navbar-brand" [routerLink]="['/home']">Home</a>
-  <a class="navbar-brand" [routerLink]="['/cart']">Cart</a>
+  <div class="cart my-2 my-lg-0 ml-auto" [routerLink]="['/cart']">
+    <a [routerLink]="['/cart']" ><span class="carticon fa fa-shopping-cart fa-2x"></span></a>
+    <div class="cartamountdiv">
+<!--      <p class="cartamount">Full Cart</p>-->
+<!--      <p class="cartamount font-weight-bold">{{cartTotalAmount}}€</p>-->
+      <a class="navbar-brand cartamount" [routerLink]="['/home']">Cart</a>
+    </div>
+  </div>
 </nav>

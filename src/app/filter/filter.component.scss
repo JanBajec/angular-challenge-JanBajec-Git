@@ -1,1 +1,94 @@
+$myBlue: #448aff;
+$myRed: #FF2F4A;
+$myOrnage: #FEBF70;
+$myBackgroundGrey: #F5F6FB;
 
+.filter{
+  background-color: white;
+  padding: 10px;
+}
+
+.active-blue .fa, .active-cyan-2 .fa {
+  color: #448aff;
+}
+
+.active-blue input.form-control[type=text]:focus:not([readonly]) {
+  border-bottom: 1px solid #448aff;
+  box-shadow: 0 1px 0 0 #448aff;
+  width: 100%;
+}
+
+.searchbutton{
+  background-color: transparent;
+  border-color: transparent;
+}
+
+::ng-deep {
+  .custom-slider .ng5-slider .ng5-slider-bar {
+    background: #f1f1f1;
+    height: 2px;
+  }
+  .custom-slider .ng5-slider .ng5-slider-selection {
+    background: $myOrnage;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-pointer {
+    width: 15px;
+    height: 15px;
+    top: auto; /* to remove the default positioning */
+    bottom: 0;
+    background-color: #007BFF;
+    border-radius: 10px;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-pointer:after {
+    display: none;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-bubble {
+    bottom: 14px;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-limit {
+    font-weight: bold;
+    color: $myOrnage;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-tick {
+    width: 1px;
+    height: 10px;
+    margin-left: 4px;
+    border-radius: 0;
+    background: #ffe4d1;
+    top: -1px;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-tick.ng5-slider-selected {
+    background: $myOrnage;
+  }
+}
+
+.autocomplete{
+  margin-top: 0;
+  z-index: 9;
+  position: absolute;
+  background-color: white;
+  margin-left: 4px;
+  padding: 0;
+  padding-top: 15px;
+  border-bottom: 0;
+  box-shadow: 3px 3px 6px 0px grey;
+  width: 165px;
+  overflow-y: auto;
+  max-height: 400px;
+}
+
+.autocompleteName{
+  margin: 0;
+  text-align: center;
+  cursor: pointer;
+}
+
+.searchbar{
+  margin-bottom: 0;
+}

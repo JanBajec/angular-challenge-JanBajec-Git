@@ -6,6 +6,7 @@ import {Data} from './data';
 })
 
 export class DataService {
+  searchNames: string[] = [];
   products: Data[] = [
     {
       'campaignId': 'CN201701188',
@@ -547,5 +548,13 @@ export class DataService {
       }
     }
     return amount;
+  }
+
+  public getAllNames(): string[] {
+    this.searchNames = [];
+    for (const product of this.products) {
+      this.searchNames.push(product.cardTitle);
+    }
+    return this.searchNames;
   }
 }

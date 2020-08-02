@@ -1,19 +1,17 @@
 <div class="filter">
-  <div class="md-form">
-    <input class="form-control" id="form1" placeholder="Search" type="text" [(ngModel)]="searchInput" (keyup)="onFilterSearch()" >
+  <div class="form-inline d-flex justify-content-center md-form form-sm active-blue mt-2">
+    <input class="form-control form-control-sm mr-3 w-75" style="margin-bottom: 0;" type="text" placeholder="Search" [(ngModel)]="searchInput"
+           aria-label="Search">
+    <button (click)="onFilterSearch()" class="fa fa-search searchbutton"></button>
   </div>
-  <hr>
-  <div class="md-form">
-    <i class="fas fa-envelope prefix"></i>
-    <input type="text" id="inputIconEx1" class="form-control">
-    <label for="inputIconEx1">E-mail address</label>
+  <div class="searchbar form-inline d-flex justify-content-center md-form form-sm active-blue mt-2">
+    <input class="form-control form-control-sm mr-3 w-75" style="margin-bottom: 0;" placeholder="Search" type="text" [(ngModel)]="searchInput" (keyup)="onFilterSearch()" (keyup)="autocomplete()">
+    <button class="fa fa-search searchbutton" disabled></button>
   </div>
-  <hr>
-  <div class="row">
-    <div class="col-1"></div>
-    <input class="col-6" placeholder="Search" type="text" [(ngModel)]="searchInput">
-    <button class="col-3" (click)="onFilterSearch()">SRC</button>
-    <div class="col-2"></div>
+  <div *ngIf="!checkIfSearchInputEmpty()" class="autocomplete">
+    <div *ngFor="let searchName of searchProductNames" class="autocompleteName">
+      <p (click)="onClikAutocomplete(searchName)">{{searchName}}</p>
+    </div>
   </div>
   <hr>
   <label>Order By:</label>

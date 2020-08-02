@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DataService} from '../data.service';
 import {CartService} from '../cart.service';
-import {Options} from 'ng5-slider';
-import {Data} from "../data";
+import {Data} from '../data';
 
 @Component({
   selector: 'app-home',

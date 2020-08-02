@@ -1,13 +1,23 @@
 <div class="details">
   <div class="row">
-    <div class="col-1"></div>
-      <img class="col-lg-4 col-md-4 col-sm-12" src="{{product.primaryMediaUrl}}">
-    <div class="col-lg-6 col-md-6 col-sm-12">
-      <p>{{product.cardTitle}}</p>
-      <p>{{getPrice(product.id)}}€</p>
-      <p>{{product.cardDescription}}</p>
-      <button [disabled]="checkifProductAlreadyExistInCart(product.id)" class="btn btn-primary" (click)="addToCart(product.id)" [routerLink]="['/home']" >Add To Cart</button>
+    <div class="productimages col-12 col-sm-7 col-md-7 col-lg-7 col-xl-7">
+      <img class="bigimage col-12" src="{{product.primaryMediaUrl}}">
     </div>
-    <div class="col-1"></div>
+    <div class="productoptions col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+      <h2 class="font-weight-bold">{{product.cardTitle}}</h2>
+      <br>
+      <p class="text-primary font-weight-bold">{{getPrice(product.id)}}€</p>
+      <button [disabled]="checkifProductAlreadyExistInCart(product.id)" class="addToCartButton btn btn-primary" (click)="addToCart(product.id)" [routerLink]="['/home']" ><i class="fa fa-cart-plus fa-2x"></i><p class="addToCartButtonText"> Add To Cart</p></button>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="productdescription col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+      <h3 class="font-weight-bold">Description</h3>
+      <p>{{product.cardDescription}}</p>
+    </div>
+    <div class="productdescription col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+
+    </div>
   </div>
 </div>

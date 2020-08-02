@@ -1,4 +1,4 @@
-import {Component, DoCheck, OnInit} from '@angular/core';
+import {Component, Output, EventEmitter, OnInit} from '@angular/core';
 import {CartService} from '../cart.service';
 import {DataService} from '../data.service';
 import {Router} from '@angular/router';
@@ -14,17 +14,14 @@ export class CartComponent implements OnInit {
   constructor(private cartService: CartService, private dataService: DataService, private router: Router) { }
 
   cartProducts: Data[] = [];
-  totalAmount: number;
+  cartSubtotalAmount: number;
 
   ngOnInit() {
     this.cartProducts = this.getMyCart();
-    this.totalAmount = this.getTotalAmount();
+    this.cartSubtotalAmount = this.getSubtotalAmount();
   }
 
-  // ngDoCheck() {
-  //   this.cartProducts = this.getMyCart();
-  //   this.totalAmount = this.getTotalAmount();
-  // }
+  @Output() updateCartTotalAmount = new EventEmitter<number>();
 
   getMyCart(): Data[] {
     const productIds = this.getProductIds();
@@ -38,21 +35,16 @@ export class CartComponent implements OnInit {
   removeFromCart(productId: string): void {
     this.cartService.removeFromCart(productId);
     this.cartProducts = this.getMyCart();
-    this.totalAmount = this.getTotalAmount();
+    this.cartSubtotalAmount = this.getSubtotalAmount();
+    this.updateCartTotalAmount.emit(this.cartSubtotalAmount);
   }
 
   getPrice(productId: string): number {
     return this.dataService.getPrice(productId);
   }
 
-  getTotalAmount(): number {
-    const productIds = this.getProductIds();
-    let totalAmount: number = 0;
-    if (productIds === null) {return totalAmount; }
-    for (const productId of productIds) {
-      totalAmount = totalAmount + this.getPrice(productId);
-    }
-    return totalAmount;
+  getSubtotalAmount(): number {
+    return this.cartService.getTotalAmount();
   }
 
   checkout(): void {
@@ -60,10 +52,16 @@ export class CartComponent implements OnInit {
     if (confirm('Your payment was successful! ')) {
       this.router.navigate(['/home']);
     }
+    this.cartSubtotalAmount = this.getSubtotalAmount();
+    this.updateCartTotalAmount.emit(this.cartSubtotalAmount);
   }
 
   checkifItemInCartExists(): boolean {
-    if (this.totalAmount === 0) {return false; } else {return true; }
+    if (this.cartSubtotalAmount === 0) {return false; } else {return true; }
+  }
+
+  submitPromoCode(): void {
+
   }
 
 }

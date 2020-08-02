@@ -1,5 +1,14 @@
 .cart{
-  margin-top: 60px;
+  margin-top: 90px;
+}
+
+.card{
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-top: 20px;
+  min-width: 500px;
+  outline:none;
+  cursor: pointer;
 }
 
 .productImage{
@@ -8,4 +17,44 @@
 
 .totalAmount{
   text-align: center;
+}
+
+.fa-trash{
+  color: grey;
+}
+
+.fa-trash:hover{
+  color: #FF2F4A;
+}
+
+.cartAddButtons{
+  position: absolute;
+  bottom: 20px;
+}
+
+.btn-light{
+  border-radius: 0px;
+  margin: 0;
+  box-shadow: none;
+  width: 10px;
+}
+
+.btn-light:hover{
+  background-color: #007BFF;
+  transition: 0.3s;
+}
+
+.promoform{
+  position: absolute;
+  bottom: 0;
+}
+
+.totalAmountLeft{
+  float: left;
+  margin-bottom: 0;
+}
+
+.totalAmountRight{
+  float: right;
+  margin-bottom: 0;
 }

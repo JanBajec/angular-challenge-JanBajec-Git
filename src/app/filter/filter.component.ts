@@ -14,7 +14,9 @@ export class FilterComponent implements OnInit {
   @Output() sortAlphabeticallyCart = new EventEmitter<Data[]>();
   @Output() filterByAmountCart = new EventEmitter<Data[]>();
 
-  cartProducts: Data[] = [];
+  filterProducts: Data[] = [];
+
+  searchProductNames: string[] = [];
 
   searchInput = '';
   filterValues = {
@@ -29,43 +31,44 @@ export class FilterComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.cartProducts = this.dataService.getProducts();
+    this.filterProducts = this.dataService.getProducts();
+    this.searchProductNames = this.dataService.getAllNames();
   }
 
   onFilterSearch(): void {
     const regex = new RegExp(this.searchInput);
     const newProducts: Data[] = [];
-    this.cartProducts = this.dataService.getProducts();
-    for (const product of this.cartProducts) {
+    this.filterProducts = this.dataService.getProducts();
+    for (const product of this.filterProducts) {
       if (regex.test(product.cardTitle)) {
         newProducts.push(product);
       }
     }
-    this.cartProducts = newProducts;
-    this.filterSearchCart.emit(this.cartProducts);
+    this.filterProducts = newProducts;
+    this.filterSearchCart.emit(this.filterProducts);
   }
 
   onSortAlphabetically(ascending: boolean): void {
     if (ascending) {
-      this.cartProducts.sort((a, b) => {
+      this.filterProducts.sort((a, b) => {
         if (a.cardTitle < b.cardTitle) { return -1; }
         if (a.cardTitle > b.cardTitle) { return 1; }
         return 0;
       });
     } else {
-      this.cartProducts.sort((a, b) => {
+      this.filterProducts.sort((a, b) => {
         if (a.cardTitle > b.cardTitle) { return -1; }
         if (a.cardTitle < b.cardTitle) { return 1; }
         return 0;
       });
     }
-    this.sortAlphabeticallyCart.emit(this.cartProducts);
+    this.sortAlphabeticallyCart.emit(this.filterProducts);
   }
 
   onFilterByAmount(): void {
     const newProducts: Data[] = [];
-    this.cartProducts = this.dataService.getProducts();
-    for (const product of this.cartProducts) {
+    this.filterProducts = this.dataService.getProducts();
+    for (const product of this.filterProducts) {
       const listOfPlans = product.listOfPlans;
       let amount = 0;
       for (const plan of listOfPlans) {
@@ -79,8 +82,30 @@ export class FilterComponent implements OnInit {
         newProducts.push(product);
       }
     }
-    this.cartProducts = newProducts;
-    this.filterByAmountCart.emit(this.cartProducts);
+    this.filterProducts = newProducts;
+    this.filterByAmountCart.emit(this.filterProducts);
+  }
+
+  checkIfSearchInputEmpty(): boolean {
+    return this.searchInput === '' || this.searchProductNames === null;
+  }
+
+  onClikAutocomplete(searchName: string): void {
+    this.searchInput = searchName;
+    this.onFilterSearch();
+    this.searchProductNames = null;
+  }
+
+  autocomplete(): void {
+    const regex = new RegExp(this.searchInput);
+    const newProductNames: string[] = [];
+    this.filterProducts = this.dataService.getProducts();
+    for (const product of this.filterProducts) {
+      if (regex.test(product.cardTitle)) {
+        newProductNames.push(product.cardTitle);
+      }
+    }
+    this.searchProductNames = newProductNames;
   }
 
 }

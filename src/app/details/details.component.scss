@@ -1,7 +1,36 @@
-.image {
-  height: auto;
-}
+//.image {
+//  height: auto;
+//}
 
 .details{
-  margin-top: 70px;
+  margin-top: 100px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.productimages{
+  margin-bottom: 35px;
+}
+
+.bigimage{
+  max-height: 500px;
+  object-fit: contain;
+}
+
+.productdescription{
+  padding: 0px 30px;
+}
+
+.addToCartButton{
+  width: 100%;
+  font-size: 15px;
+}
+
+.addToCartButtonText{
+  padding-top: 5px;
+  margin-bottom: 5px;
+}
+
+.fa-cart-plus{
+  float: left;
 }

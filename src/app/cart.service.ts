@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {LocalStorage, LocalStorageService} from 'angular-web-storage';
+import {DataService} from './data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,15 +8,16 @@ import {LocalStorage, LocalStorageService} from 'angular-web-storage';
 
 export class CartService {
 
-  constructor(public local: LocalStorageService) {}
+  constructor(public local: LocalStorageService, private dataService: DataService) {}
 
-  public products: string[] = [];
+  public productIds: string[] = [];
+  totalAmount: number;
 
   addToCart(productId: string): void {
-    this.products = this.getCart();
-    if (this.products === null) {this.products = []; }
-    this.products.push(productId);
-    this.local.set('products', this.products);
+    this.productIds = this.getCart();
+    if (this.productIds === null) {this.productIds = []; }
+    this.productIds.push(productId);
+    this.local.set('products', this.productIds);
   }
 
   getCart(): any {
@@ -23,9 +25,9 @@ export class CartService {
   }
 
   checkIfAlreadyInCart(productId: string): boolean {
-    this.products = this.getCart();
-    if (this.products === null ) {return false; }
-    for (const product of this.products) {
+    this.productIds = this.getCart();
+    if (this.productIds === null ) {return false; }
+    for (const product of this.productIds) {
       if (productId === product) {return true; }
     }
     return false;
@@ -34,13 +36,25 @@ export class CartService {
   checkout(): void {
     // to do
     this.local.clear();
+    this.totalAmount = this.getTotalAmount();
   }
 
   removeFromCart(productId: string): void {
-    this.products = this.getCart();
-    for (let i = 0; i < this.products.length; i++) {
-      if (this.products[i] === productId) { delete this.products[i]; }
+    this.productIds = this.getCart();
+    for (let i = 0; i < this.productIds.length; i++) {
+      if (this.productIds[i] === productId) { delete this.productIds[i]; }
     }
-    this.local.set('products', this.products);
+    this.local.set('products', this.productIds);
+    this.totalAmount = this.getTotalAmount();
+  }
+
+  getTotalAmount(): number {
+    const productIds = this.getCart();
+    let totalAmount: number = 0;
+    if (productIds === null) {return totalAmount; }
+    for (const productId of productIds) {
+      totalAmount = totalAmount + this.dataService.getPrice(productId);
+    }
+    return totalAmount;
   }
 }

@@ -4,4 +4,26 @@
   top: 0;
   z-index: 3;
   width: 100%;
+  height: 75px;
+  background-color: white;
+}
+
+.cart {
+  width: auto;
+  outline: none;
+  cursor: pointer;
+}
+
+.carticon{
+  margin-top: 5px;
+}
+
+.cartamountdiv{
+  float: right;
+}
+
+.cartamount{
+  margin-bottom: 0;
+  margin-left: 10px;
+  text-align: center;
 }

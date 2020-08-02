@@ -7,4 +7,10 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
 
+  cartTotalAmount: number;
+
+  // changeTotalAmount($event): void {
+  //   this.cartTotalAmount = $event;
+  // }
+
 }
