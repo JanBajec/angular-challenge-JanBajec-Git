@@ -14,6 +14,8 @@ export class FilterComponent implements OnInit {
   @Output() sortAlphabeticallyCart = new EventEmitter<Data[]>();
   @Output() filterByAmountCart = new EventEmitter<Data[]>();
 
+  filterExpand = false;
+
   filterProducts: Data[] = [];
 
   searchProductNames: string[] = [];
@@ -116,6 +118,9 @@ export class FilterComponent implements OnInit {
       }
     }
     this.searchProductNames = newProductNames;
+  }
+  filterExpandFunc(): void {
+    this.filterExpand = !this.filterExpand;
   }
 
 }
