@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {Options} from 'ng5-slider';
+import {LabelType, Options} from 'ng5-slider';
 import {Data} from '../data';
 import {DataService} from '../data.service';
 
@@ -25,14 +25,24 @@ export class FilterComponent implements OnInit {
   };
   options: Options = {
     floor: 0,
-    ceil: 10000
+    ceil: 10000,
+    translate: (value: number, label: LabelType): string => {
+      switch (label) {
+        case LabelType.Low:
+          return '$' + value;
+        case LabelType.High:
+          return '$' + value;
+        default:
+          return '$' + value;
+      }
+    }
   };
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
     this.filterProducts = this.dataService.getProducts();
-    this.searchProductNames = this.dataService.getAllNames();
+    // this.searchProductNames = this.dataService.getAllNames();
   }
 
   onFilterSearch(): void {

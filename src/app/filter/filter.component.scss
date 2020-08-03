@@ -9,7 +9,7 @@ $myBackgroundGrey: #F5F6FB;
 }
 
 .active-blue .fa, .active-cyan-2 .fa {
-  color: #448aff;
+  color: #007BFF;
 }
 
 .active-blue input.form-control[type=text]:focus:not([readonly]) {
@@ -26,46 +26,20 @@ $myBackgroundGrey: #F5F6FB;
 ::ng-deep {
   .custom-slider .ng5-slider .ng5-slider-bar {
     background: #f1f1f1;
-    height: 2px;
+    height: 3px;
   }
-  .custom-slider .ng5-slider .ng5-slider-selection {
-    background: $myOrnage;
-  }
+    .custom-slider .ng5-slider .ng5-slider-pointer {
+      width: 12px;
+      height: 21px;
+      bottom: 0;
+      background-color: #007BFF;
+      border-radius: 10px;
+      outline: none;
+    }
 
-  .custom-slider .ng5-slider .ng5-slider-pointer {
-    width: 15px;
-    height: 15px;
-    top: auto; /* to remove the default positioning */
-    bottom: 0;
-    background-color: #007BFF;
-    border-radius: 10px;
-  }
-
-  .custom-slider .ng5-slider .ng5-slider-pointer:after {
-    display: none;
-  }
-
-  .custom-slider .ng5-slider .ng5-slider-bubble {
-    bottom: 14px;
-  }
-
-  .custom-slider .ng5-slider .ng5-slider-limit {
-    font-weight: bold;
-    color: $myOrnage;
-  }
-
-  .custom-slider .ng5-slider .ng5-slider-tick {
-    width: 1px;
-    height: 10px;
-    margin-left: 4px;
-    border-radius: 0;
-    background: #ffe4d1;
-    top: -1px;
-  }
-
-  .custom-slider .ng5-slider .ng5-slider-tick.ng5-slider-selected {
-    background: $myOrnage;
-  }
+    .custom-slider .ng5-slider .ng5-slider-pointer:after {
+      display: none;
+    }
 }
 
 .autocomplete{
@@ -91,4 +65,9 @@ $myBackgroundGrey: #F5F6FB;
 
 .searchbar{
   margin-bottom: 0;
+}
+
+.filtercontent{
+  margin-left: 10px;
+  margin-right: 10px;
 }

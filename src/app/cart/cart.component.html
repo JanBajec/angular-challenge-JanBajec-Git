@@ -1,16 +1,27 @@
 <div class="cart">
       <div class="card" *ngFor="let product of cartProducts" [routerLink]="['/details',product.id]">
         <div class="row">
-          <div class="col-lg-3 col-md-4 col-sm-5 col-5">
-            <img src="{{product.primaryMediaUrl}}" class="card-img productImage" alt="...">
+          <div class="col-3">
+            <img style="float: right" src="{{product.primaryMediaUrl}}" class="card-img productImage" alt="...">
           </div>
-          <div class="col-lg-9 col-md-8 col-sm-7 col-7">
+          <div class="col-9">
             <div class="card-body">
               <a style="float: right" (click)="removeFromCart(product.id)"><i class="fa fa-trash fa-2x"></i></a>
-              <h5 class="card-title">{{product.cardTitle}}</h5>
-              <p class="card-text text-primary">{{getPrice(product.id)}}€</p>
-              <div class="row cartAddButtons">
-                <button class="btn btn-light">-</button><button class="btn btn-light" disabled>1</button><button class="btn btn-light">+</button>
+              <div class="row">
+                <h5 class="card-title col-12 col-sm-3">{{product.cardTitle}}</h5>
+                <div class="col-12 col-sm-3">
+                  <p style="margin-bottom: 0">Price:</p>
+                  <p class="card-text text-primary">{{getPrice(product.id)}}€</p>
+                </div>
+                <div class="btn-group col-12 col-sm-6 cartAddButtons" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-primary btn-sm">-</button>
+                  <button class="btn btn-primary btn-sm" disabled>1</button>
+                  <button type="button" class="btn btn-primary btn-sm">+</button>
+                </div>
+<!--                <div class="col-12 col-md-3">-->
+<!--                  <p style="margin-bottom: 0">Total Price:</p>-->
+<!--                  <p class="card-text text-primary">{{getPrice(product.id)}}€</p>-->
+<!--                </div>-->
               </div>
             </div>
           </div>

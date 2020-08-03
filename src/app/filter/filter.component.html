@@ -5,7 +5,7 @@
     <button (click)="onFilterSearch()" class="fa fa-search searchbutton"></button>
   </div>
   <div class="searchbar form-inline d-flex justify-content-center md-form form-sm active-blue mt-2">
-    <input class="form-control form-control-sm mr-3 w-75" style="margin-bottom: 0;" placeholder="Search" type="text" [(ngModel)]="searchInput" (keyup)="onFilterSearch()" (keyup)="autocomplete()">
+    <input class="form-control form-control-sm mr-3 w-75" style="margin-bottom: 0;" placeholder="Search (Auto)" type="text" [(ngModel)]="searchInput" (keyup)="onFilterSearch()" (keyup)="autocomplete()">
     <button class="fa fa-search searchbutton" disabled></button>
   </div>
   <div *ngIf="!checkIfSearchInputEmpty()" class="autocomplete">
@@ -14,14 +14,21 @@
     </div>
   </div>
   <hr>
-  <label>Order By:</label>
-  <br>
-  <input type="radio" name="sort" value="true" (click)="onSortAlphabetically(true)"><label>Alphabetically ascending</label>
-  <br>
-  <input type="radio" name="sort" value="false" (click)="onSortAlphabetically(false)"><label>Alphabetically descending</label>
+  <div>
+
+  </div>
+  <div class="filtercontent">
+    <label>Order By:</label>
+    <br>
+    <input type="radio" name="sort" value="true"  (click)="onSortAlphabetically(true)"><label>Alphabetically <i class="fa fa-arrow-down" aria-hidden="true"></i></label>
+    <br>
+    <input type="radio" name="sort" value="false" (click)="onSortAlphabetically(false)"><label>Alphabetically <i class="fa fa-arrow-up" aria-hidden="true"></i></label>
+  </div>
   <hr>
-  <label>Filter by amount in €: </label>
-  <div class="custom-slider">
-    <ng5-slider (mouseup)="onFilterByAmount()" [(value)]="filterValues.low" [(highValue)]="filterValues.high" [options]="options"></ng5-slider>
+  <div class="filtercontent">
+    <label>Filter by amount in €: </label>
+    <div class="custom-slider">
+      <ng5-slider (mouseup)="onFilterByAmount()" [(value)]="filterValues.low" [(highValue)]="filterValues.high" [options]="options"></ng5-slider>
+    </div>
   </div>
 </div>

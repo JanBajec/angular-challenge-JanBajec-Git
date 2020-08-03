@@ -34,7 +34,7 @@ $myBackgroundGrey: #F5F6FB;
 img{
   width: 100%;
   height: 200px;
-  object-fit: cover;
+  object-fit: contain
 }
 
 .description{
@@ -48,6 +48,14 @@ img{
 }
 
 .card{
-  height: 500px;
+  height: 450px;
   cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: 0 15px 30px 0 rgba(0,0,0,0.2);
+}
+
+.price {
+  color: #007BFF;
 }

@@ -31,4 +31,8 @@ export class HomeComponent implements OnInit {
     this.products = newProducts;
   }
 
+  getPrice(productId: string): number {
+    return this.dataService.getPrice(productId);
+  }
+
 }

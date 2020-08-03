@@ -11,8 +11,17 @@
   cursor: pointer;
 }
 
+.card-body{
+  padding-top: 40px;
+}
+
+.card-title{
+  margin-top: 10px;
+}
+
 .productImage{
-  //width: 300px;
+  height: 120px;
+  object-fit: contain;
 }
 
 .totalAmount{
@@ -28,8 +37,11 @@
 }
 
 .cartAddButtons{
-  position: absolute;
-  bottom: 20px;
+  //padding-bottom: 20px;
+}
+
+.btn-sm {
+  max-width: 10px;
 }
 
 .btn-light{
