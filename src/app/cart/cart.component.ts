@@ -3,13 +3,29 @@ import {CartService} from '../cart.service';
 import {DataService} from '../data.service';
 import {Router} from '@angular/router';
 import {Data} from '../data';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  styleUrls: ['./cart.component.scss'],
+  animations: [
+    trigger('divRemove', [
+      state('in', style({
+        opacity: 1,
+        transform: 'translateX(0)'
+      })),
+      transition('in => void', [
+        animate(450, style({
+          transform: 'translateX(-150%)'
+        }))
+      ])
+    ])
+  ]
 })
 export class CartComponent implements OnInit {
+
+  removeState = 'in';
 
   constructor(private cartService: CartService, private dataService: DataService, private router: Router) { }
 

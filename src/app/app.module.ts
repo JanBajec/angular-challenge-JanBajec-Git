@@ -11,6 +11,7 @@ import { CartComponent } from './cart/cart.component';
 import {LocalStorageService} from 'angular-web-storage';
 import { FilterComponent } from './filter/filter.component';
 import { HeaderComponent } from './header/header.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HeaderComponent } from './header/header.component';
     BrowserModule,
     AppRoutingModule,
     Ng5SliderModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [LocalStorageService],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CartService} from '../cart.service';
 
 @Component({
@@ -8,12 +8,14 @@ import {CartService} from '../cart.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService) {  }
 
-  // @Input() cartTotalAmount: number;
+  ngOnInit() {  }
 
-  ngOnInit() {
-    // this.cartTotalAmount = this.cartService.getTotalAmount();
+  @Output() filterButtonClick = new EventEmitter();
+
+  onFilterButton(): void {
+    this.filterButtonClick.emit();
   }
 
 }

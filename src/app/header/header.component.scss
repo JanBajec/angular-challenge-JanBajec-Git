@@ -12,18 +12,21 @@
   width: auto;
   outline: none;
   cursor: pointer;
-}
-
-.carticon{
-  margin-top: 5px;
-}
-
-.cartamountdiv{
   float: right;
 }
 
-.cartamount{
-  margin-bottom: 0;
-  margin-left: 10px;
-  text-align: center;
+.filterButton{
+  margin-right: 10px;
+}
+
+.fa-bars{
+  color: #007BFF;
+}
+
+.fa-shopping-cart{
+  margin-right: 10px;
+}
+
+.navbar-brand{
+  font-size: 30px;
 }

@@ -1,5 +1,6 @@
+<app-header></app-header>
 <div class="cart">
-      <div class="card" *ngFor="let product of cartProducts" [routerLink]="['/details',product.id]">
+      <div [@divRemove]="removeState" class="card" *ngFor="let product of cartProducts" [routerLink]="['/details',product.id]">
         <div class="row">
           <div class="col-3">
             <img style="float: right" src="{{product.primaryMediaUrl}}" class="card-img productImage" alt="...">
@@ -18,10 +19,6 @@
                   <button class="btn btn-primary btn-sm" disabled>1</button>
                   <button type="button" class="btn btn-primary btn-sm">+</button>
                 </div>
-<!--                <div class="col-12 col-md-3">-->
-<!--                  <p style="margin-bottom: 0">Total Price:</p>-->
-<!--                  <p class="card-text text-primary">{{getPrice(product.id)}}€</p>-->
-<!--                </div>-->
               </div>
             </div>
           </div>
@@ -30,7 +27,7 @@
   <hr>
   <div style="margin-left: 20px; margin-right: 20px" *ngIf="checkifItemInCartExists(); else emptyCartBlock">
     <div class="row">
-      <div class="col-7">
+      <div class="col-12 col-sm-7">
         <div class="promoform">
           <label class="grey-text">Have a Promotion code?</label>
           <form style="max-width: 300px">
@@ -43,7 +40,7 @@
           </form>
         </div>
       </div>
-      <div class="col-5">
+      <div class="col-12 col-sm-5">
         <p class="totalAmountLeft grey-text">Subtotal</p><p class="totalAmountRight grey-text">{{cartSubtotalAmount}}€</p>
         <br>
         <p class="totalAmountLeft grey-text">Shipping</p><p class="totalAmountRight grey-text">0€</p>

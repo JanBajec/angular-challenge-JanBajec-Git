@@ -1,11 +1,8 @@
 <nav class="navbar navbar-expand">
+  <a class="filterButton" (click)="onFilterButton()"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
   <a class="navbar-brand" [routerLink]="['/home']">Home</a>
   <div class="cart my-2 my-lg-0 ml-auto" [routerLink]="['/cart']">
-    <a [routerLink]="['/cart']" ><span class="carticon fa fa-shopping-cart fa-2x"></span></a>
-    <div class="cartamountdiv">
-<!--      <p class="cartamount">Full Cart</p>-->
-<!--      <p class="cartamount font-weight-bold">{{cartTotalAmount}}€</p>-->
-      <a class="navbar-brand cartamount" [routerLink]="['/home']">Cart</a>
-    </div>
+    <a [routerLink]="['/cart']" ><span class="fa fa-shopping-cart fa-2x"></span></a>
+    <a class="navbar-brand cartamount" [routerLink]="['/home']">Cart</a>
   </div>
 </nav>
