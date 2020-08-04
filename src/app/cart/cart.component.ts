@@ -20,6 +20,15 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
           transform: 'translateX(-150%)'
         }))
       ])
+    ]),
+    trigger('divCards', [
+      transition('void => *', [
+        style({
+          opacity: 0,
+          transform: 'translateY(100%)'
+        }),
+          animate(400)
+      ])
     ])
   ]
 })

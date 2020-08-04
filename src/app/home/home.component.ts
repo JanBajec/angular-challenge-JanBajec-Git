@@ -29,6 +29,15 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
       })),
       transition('showFilter <=> hideFilter', animate(200)),
     ]),
+    trigger('divCards', [
+      transition('void => *', [
+        style({
+          // opacity: 0,
+          transform: 'translateX(-100%)'
+        }),
+        animate(400)
+      ])
+    ])
   ]
 })
 export class HomeComponent implements OnInit {
