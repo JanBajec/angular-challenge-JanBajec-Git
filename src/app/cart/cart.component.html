@@ -2,10 +2,10 @@
 <div class="cart">
       <div [@divRemove]="removeState" class="card" *ngFor="let product of cartProducts" [routerLink]="['/details',product.id]">
         <div class="row">
-          <div class="col-3">
+          <div class="imgdiv col-5 col-sm-3">
             <img style="float: right" src="{{product.primaryMediaUrl}}" class="card-img productImage" alt="...">
           </div>
-          <div class="col-9">
+          <div class="bodydic col-7 col-sm-9">
             <div class="card-body">
               <a style="float: right" (click)="removeFromCart(product.id)"><i class="fa fa-trash fa-2x"></i></a>
               <div class="row">

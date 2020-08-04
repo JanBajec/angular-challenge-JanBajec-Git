@@ -6,13 +6,13 @@
   margin-right: 20px;
   margin-left: 20px;
   margin-top: 20px;
-  min-width: 500px;
+  min-width: 400px;
   outline:none;
   cursor: pointer;
 }
 
 .card-body{
-  padding-top: 40px;
+
 }
 
 .card-title{
@@ -20,7 +20,7 @@
 }
 
 .productImage{
-  height: 120px;
+  height: 174px;
   object-fit: contain;
 }
 
@@ -69,4 +69,13 @@
 .totalAmountRight{
   float: right;
   margin-bottom: 0;
+}
+
+.imgdiv .col-5 .col-sm-3{
+  padding: 0;
+  padding-left: 0px;
+}
+
+.bodydic .col-7 .col-sm-9{
+  padding: 0;
 }
